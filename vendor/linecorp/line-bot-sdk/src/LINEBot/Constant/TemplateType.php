@@ -23,4 +23,8 @@ class TemplateType
     const CONFIRM = 'confirm';
     const BUTTONS = 'buttons';
     const CAROUSEL = 'carousel';
+<<<<<<< HEAD
+=======
+    const IMAGE_CAROUSEL = 'image_carousel';
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
 }

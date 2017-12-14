@@ -1,6 +1,10 @@
 COMPOSER_BIN = ./vendor/bin
 
+<<<<<<< HEAD
 .PHONY: default test doc phpcs phpmd check install-devtool
+=======
+.PHONY: default test doc phpcs phpmd check install-devtool copyright release
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
 
 default: check
 
@@ -58,3 +62,19 @@ check: test copyright phpcs phpmd
 install-devtool:
 	bash ./devtool/download_req_mirror.sh
 
+<<<<<<< HEAD
+=======
+release:
+ifndef VERSION
+	@tput setaf 1
+	@echo '[ERROR] $$VERSION is missing; it must be specified'
+	@echo 'USAGE:'
+	@echo '    make release VERSION=1.2.3'
+	@tput sgr0
+	@exit 255
+endif
+	make doc
+	git tag $(VERSION)
+	git push origin $(VERSION)
+
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a

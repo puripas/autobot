@@ -24,6 +24,10 @@ use LINE\LINEBot\Event\FollowEvent;
 use LINE\LINEBot\Event\JoinEvent;
 use LINE\LINEBot\Event\LeaveEvent;
 use LINE\LINEBot\Event\MessageEvent\AudioMessage;
+<<<<<<< HEAD
+=======
+use LINE\LINEBot\Event\MessageEvent\FileMessage;
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
 use LINE\LINEBot\Event\MessageEvent\ImageMessage;
 use LINE\LINEBot\Event\MessageEvent\LocationMessage;
 use LINE\LINEBot\Event\MessageEvent\StickerMessage;
@@ -227,6 +231,69 @@ class EventRequestParserTest extends \PHPUnit_Framework_TestCase
     "id":"contentid",
     "type":"__unknown__"
    }
+<<<<<<< HEAD
+=======
+  },
+  {
+   "replyToken": "replytoken",
+   "type": "message",
+   "timestamp": 1462629479859,
+   "source": {
+    "type": "user",
+    "userId": "userid"
+   },
+   "message": {
+    "id": "325708",
+    "type": "file",
+    "fileName": "file.txt",
+    "fileSize": 2138
+   }
+  },
+  {
+   "replyToken": "replytoken",
+   "type": "postback",
+   "timestamp": 1501234567890,
+   "source": {
+    "type": "user",
+    "userId": "userid"
+   },
+   "postback": {
+    "data":"postback",
+    "params": {
+      "date": "2013-04-01"
+    }
+   }
+  },
+  {
+   "replyToken": "replytoken",
+   "type": "postback",
+   "timestamp": 1501234567890,
+   "source": {
+    "type": "user",
+    "userId": "userid"
+   },
+   "postback": {
+    "data":"postback",
+    "params": {
+      "time": "10:00"
+    }
+   }
+  },
+  {
+   "replyToken": "replytoken",
+   "type": "postback",
+   "timestamp": 1501234567890,
+   "source": {
+    "type": "user",
+    "userId": "userid"
+   },
+   "postback": {
+    "data":"postback",
+    "params": {
+      "datetime": "2013-04-01T10:00"
+    }
+   }
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
   }
  ]
 }
@@ -236,9 +303,15 @@ JSON;
     {
         $bot = new LINEBot(new DummyHttpClient($this, function () {
         }), ['channelSecret' => 'testsecret']);
+<<<<<<< HEAD
         $events = $bot->parseEventRequest($this::$json, 'Cz7xWmZJizFKB+paG1imAwycGOSAq6IUMVw4slB3VpQ=');
 
         $this->assertEquals(count($events), 16);
+=======
+        $events = $bot->parseEventRequest($this::$json, 'a4mKmptGCa6Kx/5PU6Ug3zC2SyLzzf9whz9/FbaR4HQ=');
+
+        $this->assertEquals(count($events), 20);
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
 
         {
             // text
@@ -371,6 +444,10 @@ JSON;
             /** @var PostbackEvent $event */
             $this->assertEquals('replytoken', $event->getReplyToken());
             $this->assertEquals('postback', $event->getPostbackData());
+<<<<<<< HEAD
+=======
+            $this->assertEquals(null, $event->getPostbackParams());
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
         }
 
         {
@@ -419,5 +496,50 @@ JSON;
             /** @var UnknownMessage $event */
             $this->assertEquals('__unknown__', $event->getMessageBody()['type']);
         }
+<<<<<<< HEAD
+=======
+
+        {
+            // file message
+            $event = $events[16];
+            $this->assertInstanceOf('LINE\LINEBot\Event\MessageEvent', $event);
+            $this->assertInstanceOf('LINE\LINEBot\Event\MessageEvent\FileMessage', $event);
+            /** @var FileMessage $event */
+            $this->assertEquals('file.txt', $event->getFileName());
+            $this->assertEquals('2138', $event->getFileSize());
+            $this->assertEquals('325708', $event->getMessageId());
+            $this->assertEquals('file', $event->getMessageType());
+        }
+
+        {
+            // postback date
+            $event = $events[17];
+            $this->assertInstanceOf('LINE\LINEBot\Event\PostbackEvent', $event);
+            /** @var PostbackEvent $event */
+            $this->assertEquals('replytoken', $event->getReplyToken());
+            $this->assertEquals('postback', $event->getPostbackData());
+            $this->assertEquals(["date" => "2013-04-01"], $event->getPostbackParams());
+        }
+
+        {
+            // postback time
+            $event = $events[18];
+            $this->assertInstanceOf('LINE\LINEBot\Event\PostbackEvent', $event);
+            /** @var PostbackEvent $event */
+            $this->assertEquals('replytoken', $event->getReplyToken());
+            $this->assertEquals('postback', $event->getPostbackData());
+            $this->assertEquals(["time" => "10:00"], $event->getPostbackParams());
+        }
+
+        {
+            // postback datetime
+            $event = $events[19];
+            $this->assertInstanceOf('LINE\LINEBot\Event\PostbackEvent', $event);
+            /** @var PostbackEvent $event */
+            $this->assertEquals('replytoken', $event->getReplyToken());
+            $this->assertEquals('postback', $event->getPostbackData());
+            $this->assertEquals(["datetime" => "2013-04-01T10:00"], $event->getPostbackParams());
+        }
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
     }
 }

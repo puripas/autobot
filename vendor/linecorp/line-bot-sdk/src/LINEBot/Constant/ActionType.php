@@ -23,4 +23,8 @@ class ActionType
     const MESSAGE = 'message';
     const POSTBACK = 'postback';
     const URI = 'uri';
+<<<<<<< HEAD
+=======
+    const DATETIME_PICKER = 'datetimepicker';
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
 }

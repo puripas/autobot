@@ -92,7 +92,10 @@ class CurlHTTPClient implements HTTPClient
         $options = [
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_HTTPHEADER => $headers,
+<<<<<<< HEAD
             CURLOPT_HEADER => false,
+=======
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_BINARYTRANSFER => true,
             CURLOPT_HEADER => true,

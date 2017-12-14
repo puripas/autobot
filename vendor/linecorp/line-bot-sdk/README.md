@@ -60,7 +60,11 @@ if ($response->isSucceeded()) {
 }
 
 // Failed
+<<<<<<< HEAD
 echo $response->getHTTPStatus . ' ' . $response->getRawBody();
+=======
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+>>>>>>> f0239ce1968693c4e6a06940badd5fdf94a81d7a
 ```
 
 `LINEBot#replyMessage()` takes the reply token and `MessageBuilder`.
